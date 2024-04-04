@@ -1,0 +1,51 @@
+﻿@model List<WebApplicationMVCExample.Models.Product>;
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <a asp-action="AddView">Add a new Customer</a>
+    @if (ViewBag.UndoMessage != null)
+    {  <h1>Hi</h1>
+        <p>@ViewBag.UndoMessage <a href="@Url.Action("UndoDelete")" class="btn btn-warning">Undo</a> this delete</p>
+    }
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Name
+            </th>
+            <th>
+                Type
+            </th>
+          
+            <th></th>
+        </tr>
+    </thead>
+    @foreach (var product in Model)
+    {
+        <tr>
+            @if (!product.isDeleted)
+            {
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.Type</td>
+                <td>
+                    <a asp-controller="Home" asp-action="EditView" asp-route-id="@product.Id">Edit</a> Edit|</td>
+                 <td>   <a asp-controller="Home" asp-action="DeleteView" asp-route-id="@product.Id">Delete</a>
+                </td>
+            } else
+            {
+                @Html.ActionLink("Undo", "UndoView", new { id = product.Id }, new { @class = "btn btn-success" })
+               
+                @if (ViewBag.UndoMessage != null)
+                {
+                    <p>@ViewBag.UndoMessage</p>
+                }
+            }
+
+        </tr>
+    }
+</table>
