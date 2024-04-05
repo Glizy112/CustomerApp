@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Asp.NetMVCExample\\WebApplicationMVCExample\\WebApplicationMVCExample\\WebApplicationMVCExample.csproj": {}
+    "D:\\assignmentsWork\\Customer_App\\WebApplicationMVCExample\\WebApplicationMVCExample.csproj": {}
   },
   "projects": {
-    "F:\\Asp.NetMVCExample\\WebApplicationMVCExample\\WebApplicationMVCExample\\WebApplicationMVCExample.csproj": {
+    "D:\\assignmentsWork\\Customer_App\\WebApplicationMVCExample\\WebApplicationMVCExample.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Asp.NetMVCExample\\WebApplicationMVCExample\\WebApplicationMVCExample\\WebApplicationMVCExample.csproj",
+        "projectUniqueName": "D:\\assignmentsWork\\Customer_App\\WebApplicationMVCExample\\WebApplicationMVCExample.csproj",
         "projectName": "WebApplicationMVCExample",
-        "projectPath": "F:\\Asp.NetMVCExample\\WebApplicationMVCExample\\WebApplicationMVCExample\\WebApplicationMVCExample.csproj",
-        "packagesPath": "C:\\Users\\bansa\\.nuget\\packages\\",
-        "outputPath": "F:\\Asp.NetMVCExample\\WebApplicationMVCExample\\WebApplicationMVCExample\\obj\\",
+        "projectPath": "D:\\assignmentsWork\\Customer_App\\WebApplicationMVCExample\\WebApplicationMVCExample.csproj",
+        "packagesPath": "C:\\Users\\garga\\.nuget\\packages\\",
+        "outputPath": "D:\\assignmentsWork\\Customer_App\\WebApplicationMVCExample\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\bansa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\garga\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -79,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

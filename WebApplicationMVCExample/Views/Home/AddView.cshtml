@@ -1,9 +1,9 @@
-﻿@model Product
+﻿@model Customer
 @{
-    ViewData["Title"] = "Create Product";
+    ViewData["Title"] = "Add a customer";
 }
 <div>
-    <p><h1>Create Product </h1></p>
+    <p><h1>@ViewData["Title"] </h1></p>
     <form method="post" asp-controller="Home" asp-action="AddView">
         <partial name="_AddEditView" model="Model"></partial>
 

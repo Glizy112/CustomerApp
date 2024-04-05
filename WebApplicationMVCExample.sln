@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationMVCExample", "WebApplicationMVCExample\WebApplicationMVCExample.csproj", "{B9993359-CF74-41D6-B46D-FDC88C394885}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplicationMVCExample", "WebApplicationMVCExample\WebApplicationMVCExample.csproj", "{B9993359-CF74-41D6-B46D-FDC88C394885}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationMVCExampleTests", "WebApplicationMVCExampleTests\WebApplicationMVCExampleTests.csproj", "{C34D852B-DEAB-4F18-BD49-8FF263E705D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{B9993359-CF74-41D6-B46D-FDC88C394885}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9993359-CF74-41D6-B46D-FDC88C394885}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9993359-CF74-41D6-B46D-FDC88C394885}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C34D852B-DEAB-4F18-BD49-8FF263E705D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C34D852B-DEAB-4F18-BD49-8FF263E705D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C34D852B-DEAB-4F18-BD49-8FF263E705D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C34D852B-DEAB-4F18-BD49-8FF263E705D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

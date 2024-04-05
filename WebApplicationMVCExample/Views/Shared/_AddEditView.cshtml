@@ -1,20 +1,70 @@
-﻿@model WebApplicationMVCExample.Models.Product
+﻿@model WebApplicationMVCExample.Models.Customer
 <div class="row">
     <div class="col-md-4">
        
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Address1"></label>
+            <input asp-for="Address1" class="form-control" />
+            <span asp-validation-for="Address1" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Address2"></label>
+            <input asp-for="Address2" class="form-control" />
+            <span asp-validation-for="Address2" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="City"></label>
+            <input asp-for="City" class="form-control" />
+            <span asp-validation-for="City" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ProvinceOrState"> Province/State: </label>
+            <input asp-for="ProvinceOrState" class="form-control" />
+            <span asp-validation-for="ProvinceOrState" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ZipOrPostalCode"> Zip/PostalCode: </label>
+            <input asp-for="ZipOrPostalCode" class="form-control" />
+            <span asp-validation-for="ZipOrPostalCode" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Phone"> Phone No: </label>
+            <input asp-for="Phone" class="form-control" />
+            <span asp-validation-for="Phone" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ContactFirstName"> Contact first name: </label>
+            <input asp-for="ContactFirstName" class="form-control" />
+            <span asp-validation-for="ContactFirstName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ContactLastName"> Contact last name: </label>
+            <input asp-for="ContactLastName" class="form-control" />
+            <span asp-validation-for="ContactLastName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ContactEmail"> Contact email: </label>
+            <input asp-for="ContactEmail" class="form-control" />
+            <span asp-validation-for="ContactEmail" class="text-danger"></span>
+        </div>
+        <span style="display: flex; margin-top: 12px">
             <div class="form-group">
-                <label asp-for="Name"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                @if(ViewData["Title"] == "Add a customer") {
+                    <input type="submit" value="Add" class="btn btn-primary" />
+                }else {
+                    <input type="submit" value="Edit" class="btn btn-primary" />
+                }
             </div>
-            <div class="form-group">
-                <label asp-for="Type"></label>
-                <input asp-for="Type" class="form-control" />
-                <span asp-validation-for="Type" class="text-danger"></span>
+            <div class="form-group" style="margin-left: 12px;">
+                @* <input type="submit" value="Cancel" class="btn btn-primary" /> *@
+                <a href="@Url.Action("Index")" class="btn btn-secondary">Cancel</a>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Submit" class="btn btn-primary" />
-            </div>
+        </span>
         
     </div>
 </div>

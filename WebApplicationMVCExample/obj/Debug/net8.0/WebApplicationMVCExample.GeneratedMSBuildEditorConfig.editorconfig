@@ -9,51 +9,51 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = WebApplicationMVCExample
 build_property.RootNamespace = WebApplicationMVCExample
-build_property.ProjectDir = F:\Asp.NetMVCExample\WebApplicationMVCExample\WebApplicationMVCExample\
+build_property.ProjectDir = D:\assignmentsWork\Customer_App\WebApplicationMVCExample\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = F:\Asp.NetMVCExample\WebApplicationMVCExample\WebApplicationMVCExample
+build_property.MSBuildProjectDirectory = D:\assignmentsWork\Customer_App\WebApplicationMVCExample
 build_property._RazorSourceGeneratorDebug = 
 
-[F:/Asp.NetMVCExample/WebApplicationMVCExample/WebApplicationMVCExample/Views/Home/AddView.cshtml]
+[D:/assignmentsWork/Customer_App/WebApplicationMVCExample/Views/Home/AddView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZGRWaWV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Asp.NetMVCExample/WebApplicationMVCExample/WebApplicationMVCExample/Views/Home/EditView.cshtml]
+[D:/assignmentsWork/Customer_App/WebApplicationMVCExample/Views/Home/EditView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFZGl0Vmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Asp.NetMVCExample/WebApplicationMVCExample/WebApplicationMVCExample/Views/Home/Index.cshtml]
+[D:/assignmentsWork/Customer_App/WebApplicationMVCExample/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Asp.NetMVCExample/WebApplicationMVCExample/WebApplicationMVCExample/Views/Home/Privacy.cshtml]
+[D:/assignmentsWork/Customer_App/WebApplicationMVCExample/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Asp.NetMVCExample/WebApplicationMVCExample/WebApplicationMVCExample/Views/Shared/Error.cshtml]
+[D:/assignmentsWork/Customer_App/WebApplicationMVCExample/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Asp.NetMVCExample/WebApplicationMVCExample/WebApplicationMVCExample/Views/Shared/_AddEditView.cshtml]
+[D:/assignmentsWork/Customer_App/WebApplicationMVCExample/Views/Shared/_AddEditView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZGRFZGl0Vmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Asp.NetMVCExample/WebApplicationMVCExample/WebApplicationMVCExample/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/assignmentsWork/Customer_App/WebApplicationMVCExample/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Asp.NetMVCExample/WebApplicationMVCExample/WebApplicationMVCExample/Views/_ViewImports.cshtml]
+[D:/assignmentsWork/Customer_App/WebApplicationMVCExample/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Asp.NetMVCExample/WebApplicationMVCExample/WebApplicationMVCExample/Views/_ViewStart.cshtml]
+[D:/assignmentsWork/Customer_App/WebApplicationMVCExample/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Asp.NetMVCExample/WebApplicationMVCExample/WebApplicationMVCExample/Views/Shared/_Layout.cshtml]
+[D:/assignmentsWork/Customer_App/WebApplicationMVCExample/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-bykz59ndpd

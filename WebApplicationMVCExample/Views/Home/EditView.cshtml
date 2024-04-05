@@ -1,15 +1,13 @@
-﻿@model Product
+﻿@model Customer
 @{
-    ViewData["Title"] = "Edit Product";
+    ViewData["Title"] = "Edit customer";
 }
 
-<div class="row text">
-    <div class="col-md-8 offset-2">
-        <p><h1>Update Product details </h1></p>
-        <form asp-controller="Home" asp-action="EditView" method="post" class="mt-3">
-            <input hidden asp-for="Id" />
-            <partial name="_AddEditView" model="Model" />
+<div>
+    <p><h1>@ViewData["Title"] </h1></p>
+    <form asp-controller="Home" asp-action="EditView" method="post" class="mt-3">
+        <input hidden asp-for="CustomerId" />
+        <partial name="_AddEditView" model="Model" />
 
-        </form>
-    </div>
+    </form>
 </div>

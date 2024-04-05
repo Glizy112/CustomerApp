@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebApplicationMVCExample.DataContext;
 using WebApplicationMVCExample.Models;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebApplicationMVCExample.Controllers
 {
@@ -28,8 +30,9 @@ namespace WebApplicationMVCExample.Controllers
 
         public IActionResult Index()
         {
-            var products = prods.Where(u => !u.isDeleted).ToList();
-            return View(products);
+            //var products = prods.Where(u => !u.isDeleted).ToList();
+            var customers = appContext.Customers.ToList();
+            return View(customers);
         }
 
         public ActionResult AddView()
@@ -38,73 +41,100 @@ namespace WebApplicationMVCExample.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddView(Product prod)
+        public ActionResult AddView(Customer cust)
         {
             if (ModelState.IsValid)
             {
-                prod.Id = prods.Count + 1;
-                
-               System.Diagnostics.Debug.WriteLine("prodId"+prod.Id);
-               
-                prods.Add(prod);
+                var customers = appContext.Customers.ToList();
+                cust.CustomerId = customers.Count + 1;
+
+                //System.Diagnostics.Debug.WriteLine("prodId"+prod.Id);
+                //customers.Add(cust);
+                appContext.Add(cust);
+                appContext.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(prod);
+            return View(cust);
         }
 
         [HttpGet]
         public async Task<IActionResult> EditView(int id)
         {
-            var prod = prods.FirstOrDefault(u => u.Id == id);
-            if (prod == null)
+            var cust = appContext.Customers.FirstOrDefault(u => u.CustomerId == id);
+            if (cust == null)
             {
                 return Error();
             }
 
 
-            return View(prod);
+            return View(cust);
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditView(Product prod)
+        public async Task<IActionResult> EditView(Customer cust)
         {
             if (ModelState.IsValid)
             {
-                var existingProduct = prods.FirstOrDefault(u => u.Id == prod.Id);
-                if (existingProduct != null)
+                var existingCustomer = appContext.Customers.FirstOrDefault(u => u.CustomerId == cust.CustomerId);
+                if (existingCustomer != null)
                 {
-                    existingProduct.Name = prod.Name;
-                    existingProduct.Type = prod.Type;
-                   
+                    System.Diagnostics.Debug.WriteLine("Editing");
+                    //existingCustomer.Name = cust.Name;
+                    //existingCustomer.Type = cust.Type;
+                    existingCustomer.Name = cust.Name;
+                    existingCustomer.Address1 = cust.Address1;
+                    existingCustomer.ContactEmail = cust.ContactEmail;
+                    existingCustomer.Phone = cust.Phone;
+                    existingCustomer.ZipOrPostalCode = cust.ZipOrPostalCode;
                 }
+                appContext.Update(existingCustomer);
+                appContext.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(prod);
+            return View(cust);
         }
 
         [HttpGet]
         public async Task<IActionResult> DeleteView(int id)
         {
-            var existingProduct = prods.FirstOrDefault(u => u.Id == id);
+
+            var existingCustomer = appContext.Customers.FirstOrDefault(u => u.CustomerId == id);
             //  prods.Remove(existingProduct);
-            existingProduct.isDeleted = true;
-            TempData["DeletedUserMessage"] = $"User {existingProduct.Name} has been deleted.";
+            existingCustomer.IsDeleted = true;
+            TempData["DeletedUserMessage"] = $"User {existingCustomer.Name} has been deleted.";
             var message = TempData["DeletedUserMessage"].ToString();
-            ViewBag.UndoMessage = message;
+            TempData["UndoMessage"] = message;
+            System.Diagnostics.Debug.WriteLine("Deleting");
             System.Diagnostics.Debug.WriteLine("view message" + message);
-            TempData["DeletedProdId"] = existingProduct.Id;
+            TempData["DeletedCustId"] = existingCustomer.CustomerId;
+
+            appContext.Update(existingCustomer);
+            appContext.SaveChanges();
+
+            //var tempDelete = Task.Run(() =>
+            //{
+            //await Task.Delay(5000);
             return RedirectToAction("Index");
+            //});
+            //if (tempDelete.Wait(TimeSpan.FromSeconds(5)))
+            //    return tempDelete.Result;
+            //else
+            //    throw new Exception("Timed Out");
+            
         }
 
         public async Task<IActionResult> UndoDelete()
         {
-            var prodId = (int)TempData["DeletedProdId"];
-            var existingProduct = prods.FirstOrDefault(u => u.Id == prodId);
-            System.Diagnostics.Debug.WriteLine("Deleted "+ existingProduct.Name);
-            existingProduct.isDeleted = false;
-            ViewBag.UndoMessage =  TempData["DeletedUserMessage"].ToString();;   
+            var custId = (int)TempData["DeletedCustId"];
+            var existingCustomer = appContext.Customers.FirstOrDefault(u => u.CustomerId == custId);
+            System.Diagnostics.Debug.WriteLine("Deleted "+ existingCustomer.Name);
+            existingCustomer.IsDeleted = false;
+            ViewBag.UndoMessage =  TempData["DeletedUserMessage"].ToString();
+
+            appContext.Update(existingCustomer);
+            appContext.SaveChanges();
 
             return RedirectToAction("Index");
         }

@@ -1,4 +1,4 @@
-﻿@model List<WebApplicationMVCExample.Models.Product>;
+﻿@model List<WebApplicationMVCExample.Models.Customer>;
 
 @{
     ViewData["Title"] = "Home Page";
@@ -6,45 +6,49 @@
 
 <div>
     <a asp-action="AddView">Add a new Customer</a>
-    @if (ViewBag.UndoMessage != null)
-    {  <h1>Hi</h1>
-        <p>@ViewBag.UndoMessage <a href="@Url.Action("UndoDelete")" class="btn btn-warning">Undo</a> this delete</p>
+    @if (TempData["UndoMessage"] != null)
+    {   <h3>Hi</h3>
+        <p>@TempData["UndoMessage"] <a href="@Url.Action("UndoDelete")" class="btn btn-warning">Undo</a> this delete</p>
     }
 </div>
 <table class="table">
     <thead>
         <tr>
             <th>
-               Name
-            </th>
-            <th>
-                Type
+                Name
             </th>
           
-            <th></th>
+            <th>
+                Address               
+            </th>
+
+            <th>
+                Actions
+            </th>
         </tr>
     </thead>
-    @foreach (var product in Model)
+    @foreach (var cust in Model)
     {
         <tr>
-            @if (!product.isDeleted)
+            @if (!cust.IsDeleted)
             {
-                <td>@product.Id</td>
-                <td>@product.Name</td>
-                <td>@product.Type</td>
+                <td>@cust.Name</td>
+                <td>@cust.Address1</td>
                 <td>
-                    <a asp-controller="Home" asp-action="EditView" asp-route-id="@product.Id">Edit</a> Edit|</td>
-                 <td>   <a asp-controller="Home" asp-action="DeleteView" asp-route-id="@product.Id">Delete</a>
+                    <a asp-controller="Home" asp-action="EditView" asp-route-id="@cust.CustomerId">Edit</a>
+                    @* <a asp-controller="Invoice" asp-action="HomeView" asp-route-id="@cust.CustomerId">Invoices</a> *@
+                    <a asp-controller="Home" asp-action="DeleteView" asp-route-id="@cust.CustomerId" style="margin-left: 8px">Delete</a>
                 </td>
-            } else
+            } 
+            @* else
             {
-                @Html.ActionLink("Undo", "UndoView", new { id = product.Id }, new { @class = "btn btn-success" })
-               
-                @if (ViewBag.UndoMessage != null)
+                @Html.ActionLink("Undo", "UndoView", new { id = cust.CustomerId }, new { @class = "btn btn-success" })
+
+                @if (TempData["UndoMessage"] != null)
                 {
-                    <p>@ViewBag.UndoMessage</p>
+                    <p>@TempData["UndoMessage"]</p>
                 }
-            }
+            } *@
 
         </tr>
     }
