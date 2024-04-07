@@ -13,12 +13,6 @@ namespace WebApplicationMVCExample.Controllers
 
         private AppDBContext appContext ;
 
-        private static List<Product> prods = new List<Product>
-        {
-            new Product { Id = 1, Name = "A", Type ="product", isDeleted =false },
-            new Product { Id = 2, Name = "B", Type ="product", isDeleted = false }
-        };
-
         public HomeController(AppDBContext appDBContext) {
             appContext = appDBContext;
         }
@@ -121,18 +115,6 @@ namespace WebApplicationMVCExample.Controllers
             appContext.Update(existingCustomer);
             appContext.SaveChanges();
 
-            return RedirectToAction("Index");
-        }
-
-        public async Task<IActionResult> Restore(int id)
-        {
-            var prod = prods.FirstOrDefault(u => u.Id == id);
-            if (prod == null)
-            {
-                return Empty;
-            }
-
-            prod.isDeleted = false;  // Restore
             return RedirectToAction("Index");
         }
 
