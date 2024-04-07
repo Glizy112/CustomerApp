@@ -1,0 +1,84 @@
+﻿
+@{
+    string message = ViewData["msg"] as string;
+    var invoiceId = ViewData["invId"];
+    var invoiceTotal = ViewData["totalAmount"];
+    List<InvoiceLineItem> lineItems = ViewData["lineItems"] as List<InvoiceLineItem>;
+}
+
+<div class="col-md-4">
+    <h5 class="fw-bold"> Line items for # @invoiceId </h5>
+    <table class="table table-bordered border-dark" style="margin-top: 12px">
+        <thead>
+            <tr>
+                <th>
+                    Description
+                </th>
+
+                <th>
+                    Amount
+                </th>
+            </tr>
+        </thead>
+        @{
+            if (lineItems?.Count > 0)
+            {
+                @foreach (var item in lineItems)
+                {
+                    <tr>
+                        <td>
+                            @item.Description
+                        </td>
+                        <td>
+                            @item.Amount
+                        </td>
+                    </tr>
+                }
+            }
+         }
+    </table>
+
+    <div>
+        <label class="fw-bold mt-3"> Total: @invoiceTotal </label>
+        <div class="form-group d-flex flex-row align-items-center mt-3">
+            <label class="fw-bold"> Description:  </label>
+            <input type="text" class="form-control w-75" style="margin-left: 12px;" id="lineItemDescInput"/>
+        </div>
+
+        <div class="form-group d-flex flex-row align-items-center mt-3">
+            <label class="fw-bold"> Amount:  </label>
+            <input class="form-control w-50" style="margin-left: 38px;" id="lineItemAmtInput" />
+        </div>
+
+        <div class="form-group mt-4">
+            <input type="submit" value="Add line item" class="btn btn-primary" onclick="sendLineItem(@invoiceId);"/>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function sendLineItem(id) {
+        console.log("Sending line item...");
+        const lineItemDesc = $('#lineItemDescInput').val();
+        const lineItemAmount = $('#lineItemAmtInput').val();
+
+        $.ajax({
+            url: '@Url.Action("AddLineItemView", "Invoice")',
+            type: 'POST',
+            data: { invId: id, lineItemDesc: lineItemDesc, lineItemAmount: lineItemAmount },
+            success: function (result, msg) {
+                console.log("Add Line Item View Message-->", result, msg);
+                if (msg === "success") {
+                    setTimeout(function () {
+                        location.reload();
+                    }, 2000);
+                }
+            },
+            error: function (error) {
+                console.log("Oops! Error..", error);
+            }
+        }).then(res => console.log("Request sent-> ", res)).catch(err => console.error("Error", err))
+
+    }
+</script>

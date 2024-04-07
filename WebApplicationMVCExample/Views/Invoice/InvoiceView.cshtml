@@ -1,0 +1,156 @@
+﻿@model List<WebApplicationMVCExample.Models.Invoice>;
+
+<div class="quickInfoContainer mt-5">
+    <div class="d-flex flex-row justify-content-between">
+        <h2> Invoices for @ViewBag.CustomerName </h2>
+        @using (Html.BeginForm("FilterCustomers", "Home", FormMethod.Post))
+        {
+            <div class="col-md-12">
+                <button type="submit" id="firstFilter" name="filterOption" value="@ViewBag.filterValue" class="form-control w-75 border border-warning">
+                    Return to @ViewBag.filter
+                </button>
+            </div>
+         }
+    </div>
+    <div class="d-flex flex-row justify-content-between text-black-50 mt-3">
+        <h4>Address: @ViewBag.CustomerAddress</h4>
+        <h4>Terms: @ViewData["invTerms"] days</h4>
+    </div>
+</div>
+
+<div class="container container-fluid h-full w-full mt-4">
+    <div class="col-md-6" style="display: flex" id="invoiceView">
+        <div class="col-md-12" id="mainDiv">
+            <h5 class="fw-bold"> Invoices </h5>
+            <table class="table table-bordered border-dark">
+                <thead>
+                    <tr>
+                        <th>
+                            Invoice #
+                        </th>
+
+                        <th>
+                            Due date
+                        </th>
+
+                        <th>
+                            Amount paid
+                        </th>
+                    </tr>
+                </thead>
+                @foreach (var inv in Model)
+                {
+                    <tr>
+                        <td>
+                            <a 
+                                href="#"
+                                style="text-decoration: none; color: blue"
+                                id="invoiceLink"
+                                onclick="setClickedId(@inv.InvoiceId); loadLineItems(@inv.InvoiceId);"
+                            >
+                                @inv.InvoiceId
+                            </a>
+                        </td>
+                        <td>
+                            @inv.InvoiceDueDate?.ToShortDateString()
+                        </td>
+                        <td>
+                            @inv.PaymentTotal
+                        </td>
+                    </tr>
+                }
+            </table>
+            <form>
+                <div class="form-group d-flex flex-row align-items-center mt-5">
+                    <label class="fw-bold"> Date:  </label>
+                    <input type="date" id="invDate" class="form-control w-50 mx-3" />
+                </div>
+
+                <div class="form-group d-flex flex-row align-items-center mt-3">
+                    <label class="fw-bold"> Terms:  </label>
+                    <select name="dueDays" id="invDueDays" class="form-select w-50 mx-2">
+                        <option value="10"> Net 10 days </option>
+                        <option value="20"> Net 20 days </option>
+                        <option value="30"> Net 30 days </option>
+                        <option value="60"> Net 60 days </option>
+                        <option value="90"> Net 90 days </option>
+                    </select>
+                </div>
+                <div class="form-group mt-4">
+                    <input type="button" value="Add invoice" id="addInvoiceBtn" class="btn btn-primary" onclick="sendInvoice();"/>
+                </div>
+            </form>
+        </div>
+
+        <div id="lineItemsViewContainer" class="col-md-12" style="margin-left: 100px">
+            <partial name="_LineItemView"></partial>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    var clickedId = 1;
+    
+    if (@Model.Count > 0) {
+        clickedId = @ViewBag.invId;
+    }
+    console.log(clickedId);
+
+    function checkLocation() {
+        console.log(window.location.href);
+    }
+
+    function sendInvoice() {
+
+        const invoiceDate = $('#invDate').val();
+        const invoiceTerms = $('#invDueDays').val();
+        const custId = @ViewBag.CustomerId;
+        console.log(invoiceDate, invoiceTerms);
+
+        $.ajax({
+            url: '@Url.Action("AddInvoiceView", "Invoice")',
+            type: 'POST',
+            data: { date: invoiceDate, terms: invoiceTerms, id: custId },
+            success: function (result, msg) {
+                console.log("Add Invoice View Message-->", result, msg);
+                if(msg==="success"){
+                    setTimeout(function () {
+                        location.reload();
+                    }, 2000);
+                }
+            },
+            error: function (error) {
+                console.log("Oops! Error..", error);
+            }
+        }).then(res => console.log("Request sent-> ", res)).catch(err=> console.error("Error", err))
+        
+    }
+
+
+    function setClickedId(id) { 
+        clickedId = id;
+    }
+
+    function loadLineItems(id) {
+        setClickedId(id);
+        console.log("AJAX Request Data:", { id: id });
+        
+        $.ajax({
+            url: '@Url.Action("LineItemView", "Invoice")',
+            type: 'GET',
+            data: { id: clickedId, custId: @ViewBag.CustomerId},
+            success: function (result, msg) {
+                $('#lineItemsViewContainer').html(result);
+            },
+            error: function (error) {
+                console.log("Oops! Error..", error);
+            }
+        })
+    }
+
+    window.onload = function () {
+         loadLineItems(clickedId);
+    };
+
+</script>

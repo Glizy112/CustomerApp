@@ -1,9 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplicationMVCExample.Models
 {
     public class Customer
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CustomerId { get; set; }
 
         [Display(Name = "Customer Name")]
@@ -37,10 +40,8 @@ namespace WebApplicationMVCExample.Models
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
         public string? Phone { get; set; }
 
-        //[Required(ErrorMessage = "Contact last name is required")]
         public string? ContactLastName { get; set; }
 
-        //[Required(ErrorMessage = "Contact first name is required")]
         public string? ContactFirstName { get; set; }
 
         [Display(Name = "Contact Email Address")]

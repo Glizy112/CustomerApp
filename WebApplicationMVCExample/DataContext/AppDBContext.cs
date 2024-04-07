@@ -7,5 +7,8 @@ namespace WebApplicationMVCExample.DataContext
     { 
         public AppDBContext(DbContextOptions options):base(options) { }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Invoice> Invoices { get; set; }
+        public DbSet<PaymentTerms> PaymentTerms { get; set; }
+        public DbSet<InvoiceLineItem> InvoiceLineItems { get; set; }
     }
 }

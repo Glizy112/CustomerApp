@@ -4,52 +4,73 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div>
-    <a asp-action="AddView">Add a new Customer</a>
-    @if (TempData["UndoMessage"] != null)
-    {   <h3>Hi</h3>
-        <p>@TempData["UndoMessage"] <a href="@Url.Action("UndoDelete")" class="btn btn-warning">Undo</a> this delete</p>
-    }
-</div>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Name
-            </th>
+<div class="container container-fluid">
+    <div class="d-flex flex-row mt-5 justify-content-between">
+        <a asp-action="AddView" class="text-decoration-none link-primary">Add a new Customer</a>
+        @if (TempData["UndoMessage"] != null)
+        {
+            <p>@TempData["UndoMessage"] <a href="@Url.Action("UndoDelete")" class="link-primary">Undo</a> this delete</p>
+        }
+    </div>
+    <div class="mt-3">
+        <table class="table table-bordered border-dark">
+            <thead>
+                <tr class="bg-dark bg-opacity-25">
+                    <th class="col-md-3">
+                        Name
+                    </th>
           
-            <th>
-                Address               
-            </th>
+                    <th class="col-md-6">
+                        Address               
+                    </th>
 
-            <th>
-                Actions
-            </th>
-        </tr>
-    </thead>
-    @foreach (var cust in Model)
-    {
-        <tr>
-            @if (!cust.IsDeleted)
-            {
-                <td>@cust.Name</td>
-                <td>@cust.Address1</td>
-                <td>
-                    <a asp-controller="Home" asp-action="EditView" asp-route-id="@cust.CustomerId">Edit</a>
-                    @* <a asp-controller="Invoice" asp-action="HomeView" asp-route-id="@cust.CustomerId">Invoices</a> *@
-                    <a asp-controller="Home" asp-action="DeleteView" asp-route-id="@cust.CustomerId" style="margin-left: 8px">Delete</a>
-                </td>
-            } 
-            @* else
-            {
-                @Html.ActionLink("Undo", "UndoView", new { id = cust.CustomerId }, new { @class = "btn btn-success" })
-
-                @if (TempData["UndoMessage"] != null)
+                    <th class="col-md-3">
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+            @if(@Model.Count <= 0 ){
+                <tr class="table table-borderless"> 
+                    <td class="text-danger fw-bold">No data found</td>
+                </tr>
+            }else{
+                @foreach (var cust in Model)
                 {
-                    <p>@TempData["UndoMessage"]</p>
+                    <tr>
+                        @if (!cust.IsDeleted)
+                        {
+                            <td>@cust.Name</td>
+                            <td>@cust.Address1</td>
+                            <td class="d-flex flex-row align-items-center">
+                                <a asp-controller="Home" asp-action="EditView" asp-route-id="@cust.CustomerId">Edit</a>
+                                <a asp-controller="Invoice" asp-action="InvoiceView" asp-route-id="@cust.CustomerId" class="mx-2">Invoices</a>
+                                <a asp-controller="Home" asp-action="DeleteView" asp-route-id="@cust.CustomerId" class="mx-2">Delete</a>
+                            </td>
+                        }
+                    </tr>
                 }
-            } *@
+            }
+           
+        </table>
+    </div>
 
-        </tr>
-    }
-</table>
+    <div class="col-md-4 mt-4">
+        @using (Html.BeginForm("FilterCustomers", "Home", FormMethod.Post))
+        {
+            <div class="d-flex flex-row align-items-center">
+                <button type="submit" id="firstFilter" onclick="document.getElementById('#firstFilter').class = active" name="filterOption" value="A" class="form-control w-25">
+                    A-E
+                </button>
+                <button type="submit" id="secondFilter" name="filterOption" value="F" class="form-control w-25 mx-2">
+                    F-K
+                </button>
+                <button type="submit" id="thirdFilter" name="filterOption" value="L" class="form-control w-25 mx-2">
+                    L-R
+                </button>
+                <button type="submit" id="fourthFilter" name="filterOption" value="S" class="form-control w-25">
+                    S-Z
+                </button>
+           </div>
+        }
+    </div>
+</div>

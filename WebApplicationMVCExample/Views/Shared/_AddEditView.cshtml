@@ -1,70 +1,116 @@
 ﻿@model WebApplicationMVCExample.Models.Customer
 <div class="row">
-    <div class="col-md-4">
-       
-        <div class="form-group">
-            <label asp-for="Name"></label>
-            <input asp-for="Name" class="form-control" />
-            <span asp-validation-for="Name" class="text-danger"></span>
+    <div class="col-md-6">
+        <div>
+            <div class="form-group d-flex flex-row align-items-center col-md-9 mt-3">
+                <label asp-for="Name" class="col-md-4"></label>
+                <input asp-for="Name" class="form-control col-md-4" />
+            </div>
+            <div class="form-group d-flex flex-row col-md-9">
+                <label class="col-md-4 text-white">Error</label>
+                <span asp-validation-for="Name" class="text-danger col-md-6"></span>
+            </div>
         </div>
-        <div class="form-group">
-            <label asp-for="Address1"></label>
-            <input asp-for="Address1" class="form-control" />
-            <span asp-validation-for="Address1" class="text-danger"></span>
+
+        <div>
+            <div class="form-group d-flex flex-row align-items-center col-md-9 mt-3">
+                <label asp-for="Address1" class="col-md-4"></label>
+                <input asp-for="Address1" class="form-control col-md-4" />
+            </div>
+            <div class="form-group d-flex flex-row col-md-9">
+                <label class="col-md-4 text-white">Error</label>
+                <span asp-validation-for="Address1" class="text-danger"></span>
+            </div>
+        <div>
+            <div class="form-group d-flex flex-row align-items-center col-md-9 mt-3">
+                <label asp-for="Address2" class="col-md-4"></label>
+                <input asp-for="Address2" class="form-control col-md-4" />
+            </div>
+             <div class="form-group d-flex flex-row col-md-9">
+                <label class="col-md-4 text-white">Error</label>
+                <span asp-validation-for="Address2" class="text-danger"></span>
+             </div>
+         </div>
+        <div>
+            <div class="form-group d-flex flex-row align-items-center col-md-9 mt-3">
+                <label asp-for="City" class="col-md-4"></label>
+                <input asp-for="City" class="form-control col-md-4" />
+            </div>
+            <div class="form-group d-flex flex-row col-md-9">
+                <label class="col-md-4 text-white">Error</label>
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
         </div>
-        <div class="form-group">
-            <label asp-for="Address2"></label>
-            <input asp-for="Address2" class="form-control" />
-            <span asp-validation-for="Address2" class="text-danger"></span>
+        <div>
+            <div class="form-group d-flex flex-row align-items-center col-md-9 mt-3">
+                <label asp-for="ProvinceOrState" class="col-md-4"></label>
+                <input asp-for="ProvinceOrState" class="form-control col-md-4" />
+            </div>
+            <div class="form-group d-flex flex-row col-md-9">
+                <label class="col-md-4 text-white">Error</label>
+                <span asp-validation-for="ProvinceOrState" class="text-danger"></span>
+            </div>
         </div>
-        <div class="form-group">
-            <label asp-for="City"></label>
-            <input asp-for="City" class="form-control" />
-            <span asp-validation-for="City" class="text-danger"></span>
+        <div>
+            <div class="form-group d-flex flex-row align-items-center col-md-9 mt-3">
+                <label asp-for="ZipOrPostalCode" class="col-md-4"></label>
+                <input asp-for="ZipOrPostalCode" class="form-control col-md-4" />
+            </div>
+            <div class="form-group d-flex flex-row col-md-9">
+                <label class="col-md-4 text-white">Error</label>
+                <span asp-validation-for="ZipOrPostalCode" class="text-danger"></span>
+            </div>
         </div>
-        <div class="form-group">
-            <label asp-for="ProvinceOrState"> Province/State: </label>
-            <input asp-for="ProvinceOrState" class="form-control" />
-            <span asp-validation-for="ProvinceOrState" class="text-danger"></span>
+        <div>
+            <div class="form-group d-flex flex-row align-items-center col-md-9 mt-3">
+                <label asp-for="Phone" class="col-md-4"></label>
+                <input asp-for="Phone" class="form-control col-md-4" />
+            </div>
+            <div class="form-group d-flex flex-row col-md-9">
+                <label class="col-md-4 text-white">Error</label>
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
         </div>
-        <div class="form-group">
-            <label asp-for="ZipOrPostalCode"> Zip/PostalCode: </label>
-            <input asp-for="ZipOrPostalCode" class="form-control" />
-            <span asp-validation-for="ZipOrPostalCode" class="text-danger"></span>
+        <div>
+            <div class="form-group d-flex flex-row align-items-center col-md-9 mt-3">
+                <label asp-for="ContactFirstName" class="col-md-4"></label>
+                <input asp-for="ContactFirstName" class="form-control col-md-4" />
+            </div>
+            <div class="form-group d-flex flex-row col-md-9">
+                <label class="col-md-4 text-white">Error</label>
+                <span asp-validation-for="ContactFirstName" class="text-danger"></span>
+            </div>
         </div>
-        <div class="form-group">
-            <label asp-for="Phone"> Phone No: </label>
-            <input asp-for="Phone" class="form-control" />
-            <span asp-validation-for="Phone" class="text-danger"></span>
+        <div>
+            <div class="form-group d-flex flex-row align-items-center col-md-9 mt-3">
+                <label asp-for="ContactLastName" class="col-md-4"></label>
+                <input asp-for="ContactLastName" class="form-control col-md-4" />
+            </div>
+            <div class="form-group d-flex flex-row col-md-9">
+                <label class="col-md-4 text-white">Error</label>
+                <span asp-validation-for="ContactLastName" class="text-danger"></span>
+            </div>
         </div>
-        <div class="form-group">
-            <label asp-for="ContactFirstName"> Contact first name: </label>
-            <input asp-for="ContactFirstName" class="form-control" />
-            <span asp-validation-for="ContactFirstName" class="text-danger"></span>
+        <div>
+            <div class="form-group d-flex flex-row align-items-center col-md-9 mt-3">
+                <label asp-for="ContactEmail" class="col-md-3"></label>
+                <p class="col-md-1"></p>
+                <input asp-for="ContactEmail" class="form-control col-md-4" />
+            </div>
+            <div class="form-group d-flex flex-row col-md-9">
+                <label class="col-md-4 text-white">Error</label>
+                <span asp-validation-for="ContactEmail" class="text-danger"></span>
+            </div>
         </div>
-        <div class="form-group">
-            <label asp-for="ContactLastName"> Contact last name: </label>
-            <input asp-for="ContactLastName" class="form-control" />
-            <span asp-validation-for="ContactLastName" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="ContactEmail"> Contact email: </label>
-            <input asp-for="ContactEmail" class="form-control" />
-            <span asp-validation-for="ContactEmail" class="text-danger"></span>
-        </div>
-        <span style="display: flex; margin-top: 12px">
-            <div class="form-group">
+        <div class="d-flex flex-row mt-5 col-md-6">
+           
                 @if(ViewData["Title"] == "Add a customer") {
-                    <input type="submit" value="Add" class="btn btn-primary" />
+                <input type="submit" value="Add" class="btn btn-primary col-md-8" />
                 }else {
-                    <input type="submit" value="Edit" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary col-md-8" />
                 }
-            </div>
-            <div class="form-group" style="margin-left: 12px;">
-                @* <input type="submit" value="Cancel" class="btn btn-primary" /> *@
-                <a href="@Url.Action("Index")" class="btn btn-secondary">Cancel</a>
-            </div>
-        </span>
+                <a href="@Url.Action("Index")" class="btn btn-secondary col-md-8 mx-5">Cancel</a>
+        </div>
         
     </div>
 </div>
